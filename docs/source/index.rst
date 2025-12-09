@@ -1,14 +1,8 @@
-Remove standalone '---' separators: replaced occurrences with standard spacing and headings.
-
 .. XAI Attention is Not Explanation documentation master file
 
 ==========================================================
 XAI Mini-Projet : Attention is Not Explanation
 ==========================================================
-
-.. image:: _static/banner.txt
-   :align: center
-   :alt: Project Banner
 
 **Analyse Critique du Mécanisme d'Attention comme Outil d'Explicabilité**
 
@@ -19,7 +13,7 @@ et `Wiegreffe & Pinter (2019) <https://arxiv.org/abs/1908.04626>`_
    **Type du projet** : NLP / Explicabilité de l'IA (XAI)  
    **Date** : Décembre 2025  
    **Cours** : Explicabilité de l'IA  
-   **Étudiants** : [Nom Étudiant 1] & [Nom Étudiant 2]
+   **Étudiants** :AMRI Maryam & SERRAJI Wiam & BOUGHNAM Houda
 
 Table des Matières
 ==================
