@@ -17,20 +17,16 @@ extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.mathjax',
     'sphinx.ext.viewcode',
-    'sphinx_rtd_theme',
     'sphinx.ext.napoleon',
 ]
 
-# Theme
+# Theme: Read the Docs
 html_theme = 'sphinx_rtd_theme'
-
 html_theme_options = {
     'logo_only': False,
-    'display_version': True,
-    'prev_next_buttons_location': 'bottom',
-    'style_external_links': False,
-    'vcs_pageview_mode': '',
-    'style_nav_header_background': '#3498db',
+    'collapse_navigation': False,
+    'navigation_depth': 4,
+    'style_external_links': True,
 }
 
 # HTML output options
@@ -49,3 +45,4 @@ source_suffix = '.rst'
 
 # Master doc
 master_doc = 'index'
+

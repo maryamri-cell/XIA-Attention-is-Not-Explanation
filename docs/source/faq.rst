@@ -288,12 +288,12 @@ Puis montrer aussi LIME/SHAP pour la vraie raison.
 
 R: 
 
-- ✓ Débugage interne (vous connaissez les limitations)
-- ✓ Recherche exploratoire (préalable à une analyse rigoureuse)
-- ✓ Visualisations pédagogiques (avec contexte)
-- ✗ Décisions critiques (médecine, justice, finance)
-- ✗ Communication grand public (sans avertissement)
-- ✗ Conformité réglementaire (seulement)
+    - Débugage interne (avec connaissance des limitations)
+    - Recherche exploratoire (préliminaire à une analyse rigoureuse)
+    - Visualisations pédagogiques (avec contexte et avertissements)
+    - Décisions critiques (médecine, justice, finance) : déconseillé
+    - Communication grand public sans avertissement : déconseillé
+    - Conformité réglementaire : ne pas utiliser l'attention seule
 
 ---
 
@@ -420,11 +420,11 @@ Remerciements
 
 Merci d'avoir lu ! Nous espérons que ce projet vous a aidé à :
 
-✓ Comprendre le débat scientifique sur l'attention et l'XAI  
-✓ Apprendre à évaluer les explications empiriquement  
-✓ Utiliser LIME, SHAP de manière responsable  
-✓ Développer un esprit critique en ML/IA  
+- Comprendre le débat scientifique sur l'attention et l'XAI
+- Apprendre à évaluer les explications empiriquement
+- Utiliser LIME et SHAP de manière responsable
+- Développer un esprit critique en ML/IA
 
-Bonne lecture !
+Bonne lecture.
 
 ---

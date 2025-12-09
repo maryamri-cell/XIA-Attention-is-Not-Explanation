@@ -1,3 +1,5 @@
+Explanation: remove standalone '---' separators from this file to avoid small dashes in generated HTML.
+
 .. _contexte-motivation:
 
 ============================
@@ -7,8 +9,6 @@
 .. contents::
    :local:
    :depth: 2
-
----
 
 Le Problème Fondamental
 ========================
@@ -22,8 +22,6 @@ Ce mécanisme produit des **poids d'attention** : des probabilités indiquant le
    **En théorie** : Ces poids d'attention devraient révéler quels tokens influencent la prédiction du modèle.
    
    **En pratique** : Cela ne fonctionne pas toujours !
-
----
 
 Le Débat Scientifique : Deux Visions Opposées
 ==============================================
@@ -47,9 +45,9 @@ Article 1 : « Attention is Not Explanation »
    
    .. math::
       
-      \text{Si} \quad \sigma(\alpha) = \sigma(\alpha') \quad \text{mais} \quad \alpha \neq \alpha'
+      	ext{Si} \quad \sigma(\alpha) = \sigma(\alpha') \quad \text{mais} \quad \alpha \neq \alpha'
       
-      \text{Alors l'attention ne capture pas les décisions causales}
+      	ext{Alors l'attention ne capture pas les décisions causales}
 
 2. **Distributions alternatives** : D'autres distributions de poids produisent des résultats identiques
 
@@ -58,8 +56,6 @@ Article 1 : « Attention is Not Explanation »
 4. **Métaphore du "où" vs "pourquoi"** : L'attention montre **où** le modèle regarde, pas **pourquoi** il décide
 
 **Impact** : Article très influent ayant semé le doute sur la validité de visualiser les heatmaps d'attention.
-
----
 
 Article 2 : « Attention is Not Not Explanation »
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -89,8 +85,6 @@ Article 2 : « Attention is Not Not Explanation »
 
 **Impact** : Apporte une nuance importante : le problème n'est pas binaire, mais dépend fortement du contexte.
 
----
-
 Où se Situe ce Projet ?
 ~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -100,24 +94,31 @@ Ce projet **prend du recul** et propose une **analyse critique autonome** :
    :align: center
    :alt: Spectrum du débat
 
-- ✗ Nous ne défendons pas l'une ou l'autre position absolue
-- ✓ Nous **reproduisons expérimentalement** les critiques des deux camps
-- ✓ Nous **quantifions empiriquement** la fiabilité de l'attention via LIME et SHAP
-- ✓ Nous **développons un jugement critique** nuancé
-
----
+- Nous ne prenons pas parti de manière dogmatique
+- Reproduction expérimentale des analyses présentées par les deux camps
+- Quantification empirique de la fiabilité de l'attention via LIME et SHAP
+- Développement d'un jugement critique et nuancé
 
 Objectifs du Projet
 ====================
 
-| Objectif | Description | Métrique |
-|:---------|:-----------|----------|
-| **Analyser** | Examiner si l'attention capture l'importance réelle | Corrélation de Spearman |
-| **Comparer** | Confronter attention, LIME et SHAP | Visualisations comparatives |
-| **Démontrer** | Identifier des cas pathologiques | Cas d'étude (négations, etc.) |
-| **Critiquer** | Développer un jugement nuancé | Discussion qualitative |
+Ce projet poursuit quatre objectifs complémentaires :
 
----
+**1. Analyser**
+
+Examiner empiriquement si les poids d'attention capturent réellement l'importance des tokens pour la prédiction du modèle. Nous utilisons la corrélation de Spearman comme métrique principale.
+
+**2. Comparer**
+
+Confronter les explications par attention avec deux méthodes d'explication établies : LIME (régression locale pondérée) et SHAP (théorie des jeux coopératifs). Cette comparaison révèle les forces et faiblesses de chaque approche.
+
+**3. Démontrer**
+
+Identifier des cas pathologiques où l'attention échoue systématiquement. Les négations et structures linguistiques complexes sont particulièrement intéressantes. Nous les analysons en détail pour comprendre les limites.
+
+**4. Critiquer**
+
+Développer un jugement nuancé et fondé empiriquement. Plutôt que de répondre par oui ou non à « l'attention est-elle une explication ? », nous caractérisons précisément **quand** et **pourquoi** l'attention est fiable ou trompeuse.
 
 Questions de Recherche
 ======================
@@ -131,8 +132,6 @@ Cette étude tente de répondre à :
 3. **Q3** : Existe-t-il des heuristiques pour identifier quand l'attention est fiable vs trompeuse ?
 
 4. **Q4** : Comment utiliser l'attention de manière responsable dans une pipeline XAI ?
-
----
 
 Caractéristiques de l'Étude
 ============================
@@ -159,43 +158,37 @@ Caractéristiques de l'Étude
    * - **Méthodes de validation**
      - LIME, SHAP, corrélation de Spearman
 
----
-
 Enjeux Pratiques
 =================
 
 Pourquoi cette question est-elle importante ?
 
-1. **Trustworthiness** 🔐
+1. **Confiance**
    
    Si l'attention est trompeuse, visualiser des heatmaps augmente faussement la confiance des utilisateurs.
 
-2. **Responsabilité** ⚖️
+2. **Responsabilité**
    
    Les systèmes de recommandation ou de classification doivent reposer sur des explications **réelles**, pas superficielles.
 
-3. **Recherche** 🔬
+3. **Recherche**
    
    Le débat affecte comment on interprète les résultats des modèles Transformer.
 
-4. **Adoption** 📈
+4. **Adoption**
    
    Savoir quand faire confiance à l'attention guidera son utilisation en production.
-
----
 
 Contribution du Projet
 ======================
 
-Ce projet contribue :
+Cette étude contribue :
 
-✓ **Reproduction** des critiques scientifiques dans un cadre unifié  
-✓ **Validation empirique** sur des cas français et anglais  
-✓ **Identification** de points de basculement (quand l'attention faillit)  
-✓ **Recommandations** pratiques pour l'usage responsable  
-✓ **Code ouvert** pour étudier d'autres modèles/tâches  
-
----
+- **Reproduction** des analyses scientifiques dans un cadre unifié
+- **Validation empirique** sur des cas en français et en anglais
+- **Identification** de points de basculement (scénarios où l'attention est moins fiable)
+- **Recommandations** pratiques pour une utilisation responsable
+- **Code ouvert** facilitant la reproduction et l'extension des expériences
 
 Structure de la Suite
 =====================
@@ -209,8 +202,6 @@ La documentation progresse comme suit :
 5. **Critique** → Analyse nuancée et recommandations
 6. **Conclusion** → Synthèse et perspectives
 
----
-
 Prérequis
 =========
 
@@ -223,25 +214,16 @@ Pour suivre ce projet, il est utile de connaître :
 - **XAI** : LIME, SHAP (brèves explications fournies)
 
 .. note::
-   
-   Pas de panique ! Chaque concept est expliqué progressivement.
-
----
+   Chaque concept est expliqué progressivement.
 
 Prochaines Étapes
 ==================
 
 Prêt à plonger ? Commencez par :
-
 1. **Lire** l'intuition de la méthode (section 2)
 2. **Maîtriser** la formalisation mathématique (section 3)
 3. **Exécuter** le code (section 4)
 4. **Analyser** les résultats (section 5)
 
-.. button-ref:: 2_intuition_methode
-   :color: primary
-   :outline:
+Continuez vers la section suivante : :ref:`intuition-methode`
 
-   Continuer vers l'Intuition →
-
----

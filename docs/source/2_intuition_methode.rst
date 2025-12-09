@@ -1,3 +1,5 @@
+Remove standalone '---' separators to avoid small dashes in HTML output.
+
 .. _intuition-methode:
 
 =========================
@@ -7,8 +9,6 @@
 .. contents::
    :local:
    :depth: 2
-
----
 
 L'Idée en Termes Simples
 ========================
@@ -25,9 +25,7 @@ En lisant la phrase, ce lecteur va naturellement **focaliser son attention** sur
 
 Ces mots clés (adjectifs, négations, intensifieurs) influencent directement sa conclusion.
 
-**La question** : Les modèles Transformer reproduisent-ils ce comportement de manière fiable ?
-
----
+**La question fondamentale** : Les modèles Transformer reproduisent-ils ce comportement humain de manière fiable ? Les poids d'attention correspondent-ils réellement aux mots qui causent la prédiction ?
 
 Le Mécanisme d'Attention Expliqué
 ==================================
@@ -71,7 +69,7 @@ Pour le token "good" (position 4), le modèle calcule des "scores d'attention" v
 
 .. math::
    
-   \text{score}_{4 \to j} = query_4 \cdot key_j \quad \forall j
+   	ext{score}_{4 \to j} = query_4 \cdot key_j \quad \forall j
 
 **Étape 2 : Normalisation**
 
@@ -96,9 +94,7 @@ La sortie agrège les informations des autres tokens selon ces poids :
 
 .. math::
    
-   \text{output}_4 = \sum_j \alpha_{4,j} \cdot value_j
-
----
+   	ext{output}_4 = \sum_j \alpha_{4,j} \cdot value_j
 
 Visualisation du Processus
 ==========================
@@ -142,8 +138,6 @@ Voici un diagramme du flux d'attention dans un Transformer :
     │  [Nouvelle représentation du token]      │
     └──────────────────────────────────────────┘
 
----
-
 Le Piège de l'Interprétation Naïve
 ==================================
 
@@ -175,23 +169,21 @@ Les poids d'attention élevés ne garantissent **pas** que le token influe réel
 
 Les raisons incluent :
 
-1. **Biais syntaxique** 📝
+1. **Biais syntaxique**
    
-   L'attention peut se concentrer sur des tokens importants **syntaxiquement** (verbes, noms) sans lien avec la décision.
+   L'attention peut se concentrer sur des tokens importants syntaxiquement (verbes, noms) sans lien réel avec la décision de classification.
 
-2. **Rôle contextuel** 🔗
+2. **Rôle contextuel**
    
-   Un token peut être important pour construire la représentation sans influencer la classification finale.
+   Un token peut être important pour construire la représentation latente du modèle sans pour autant influencer la classification finale.
 
-3. **Dépendance positionnelle** 📍
+3. **Dépendance positionnelle**
    
-   Les positions du début ou fin de phrase reçoivent parfois plus d'attention indépendamment du contenu.
+   Les positions du début ou fin de phrase reçoivent parfois plus d'attention indépendamment de leur contenu sémantique.
 
-4. **Bruit d'optimisation** 🎲
+4. **Bruit d'optimisation**
    
-   Pendant l'entraînement, les poids d'attention peuvent se stabiliser sur des patterns non causaux.
-
----
+   Pendant l'entraînement, les poids d'attention peuvent se stabiliser sur des patterns non causaux, résultant d'artefacts numériques.
 
 Illustration avec un Exemple Problématique
 ===========================================
@@ -203,7 +195,7 @@ Considérez deux phrases :
     Phrase A: "This movie is NOT good"
     Phrase B: "This movie is good"
 
-**Prédiction du modèle** : Les deux donnent NEGATIVE et POSITIVE respectivement ✓
+**Prédiction du modèle** : Phrase A → NEGATIVE, Phrase B → POSITIVE (prédictions correctes)
 
 **Attention observée** :
 
@@ -224,12 +216,7 @@ Considérez deux phrases :
 
 **Conclusion** :
 
-    ⚠️ Le mot "NOT" devrait être CRUCIAL pour inverser le sentiment, 
-    mais l'attention ne lui donne pas de poids correspondant !
-
-C'est une **signature d'un décalage entre attention et causalité**.
-
----
+Le mot "NOT" devrait logiquement être **crucial** pour inverser le sentiment de "good" en sentiment négatif. Pourtant, l'attention ne lui donne pas de poids correspondant. C'est une signature claire d'un décalage entre attention et causalité réelle.
 
 Pourquoi l'Attention Peut Échouer
 ==================================
@@ -262,8 +249,6 @@ Facteurs d'Erreur
      - Softmax rend difficile la distinction entre poids importants et moins importants
      - Amplification artificielle des petites différences
 
----
-
 Comparison : Attention vs Explication Réelle
 ============================================
 
@@ -288,26 +273,17 @@ Imaginez demander à quelqu'un :
 
 Les deux ne sont **pas équivalentes** !
 
----
 
 Langage Technique
 ~~~~~~~~~~~~~~~~~~
 
-+---------------------+------------------------------+-----------------------------+
-| Aspect              | ATTENTION                    | EXPLICATION CAUSALE         |
-+=====================+==============================+=============================+
-| **Nature**          | Probabilité de consultation  | Influence réelle            |
-+---------------------+------------------------------+-----------------------------+
-| **Fiabilité**       | Incertaine (contexte)        | Validée par test            |
-+---------------------+------------------------------+-----------------------------+
-| **Manipulation**     | Modifiable sans effet        | Affecte la prédiction       |
-+---------------------+------------------------------+-----------------------------+
-| **Intérprétabilité**| Facile visuellement          | Plus difficile à extraire   |
-+---------------------+------------------------------+-----------------------------+
-| **Exemple**         | "Le modèle regarde ce mot"   | "Ce mot change la décision" |
-+---------------------+------------------------------+-----------------------------+
+Points-clés :
 
----
+- **Nature** : l'attention indique la consultation d'autres tokens, alors que l'explication causale décrit l'influence réelle sur la prédiction.
+- **Fiabilité** : l'attention peut être contextuelle et incertaine ; l'explication causale nécessite une validation empirique.
+- **Manipulation** : modifier des poids d'attention n'implique pas nécessairement un changement de prédiction.
+- **Intérprétabilité** : l'attention est visuellement intuitive, l'explication causale est plus difficile à extraire mais plus informative.
+- **Exemple** : attention → "le modèle regarde ce mot" ; causalité → "ce mot change la décision"
 
 La Nécessité d'une Validation Empirique
 ========================================
@@ -326,26 +302,16 @@ Si :
 
 .. math::
    
-   \text{Corrélation(Attention, LIME)} \approx 1 \quad \Rightarrow \quad \text{Attention est fiable}
+   	ext{Corrélation(Attention, LIME)} \approx 1 \quad \Rightarrow \quad \text{Attention est fiable}
    
-   \text{Corrélation(Attention, LIME)} \approx 0 \quad \Rightarrow \quad \text{Attention n'explique rien}
-
----
+   	ext{Corrélation(Attention, LIME)} \approx 0 \quad \Rightarrow \quad \text{Attention n'explique rien}
 
 Roadmap de l'Étude
-===================
+==================
 
-Pour tester ces hypothèses :
+Pour tester ces hypothèses, nous suivons cette progression :
 
-✓ **Section 3** : Formalisation mathématique  
-✓ **Section 4** : Code et implémentation  
-✓ **Section 5** : Expériences et résultats  
-✓ **Section 6** : Analyse critique  
-
-.. button-ref:: 3_formalisation_mathematique
-   :color: primary
-   :outline:
-
-   Continuer vers les Équations →
-
----
+1. **Section 3** : Formalisation mathématique des concepts clés
+2. **Section 4** : Code et implémentation pratique
+3. **Section 5** : Expériences et résultats empiriques
+4. **Section 6** : Analyse critique et recommandations

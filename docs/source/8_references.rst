@@ -281,10 +281,10 @@ Argument : Pour vraiment expliquer une décision, il faut montrer comment la mod
 
 ---
 
-Ressources d'Apprentissage
-===========================
+Ressources d'apprentissage
+============================
 
-**Pour Débuter** 🟢
+**Pour débuter**
 
 1. **Blog : The Illustrated Transformer** (Jay Alammar)
    
@@ -298,7 +298,7 @@ Ressources d'Apprentissage
    
    Explication visuelle de BERT.
 
-3. **Hugging Face Course** 
+3. **Hugging Face Course**
    
    https://huggingface.co/course
    
@@ -306,7 +306,7 @@ Ressources d'Apprentissage
 
 ---
 
-**Pour Approfondir** 🟡
+**Pour approfondir**
 
 1. **Explainability in Deep Learning**
    
@@ -328,7 +328,7 @@ Ressources d'Apprentissage
 
 ---
 
-**Pour Chercheurs** 🔴
+**Pour chercheurs**
 
 1. **ACL Anthology**
    
@@ -350,10 +350,10 @@ Ressources d'Apprentissage
 
 ---
 
-Données et Modèles
+Données et modèles
 ===================
 
-**Datasets** 📊
+**Datasets**
 
 - **SST-2** (Stanford Sentiment Treebank)
   
@@ -369,7 +369,7 @@ Données et Modèles
 
 ---
 
-**Modèles Pré-entraînés** 🤖
+**Modèles pré-entraînés**
 
 - **DistilBERT**
   
@@ -397,23 +397,23 @@ Données et Modèles
 
 ---
 
-Libraries et Outils
+Libraries et outils
 ===================
 
-**XAI Libraries** 🔍
+**XAI Libraries**
 
 - **LIME** : https://github.com/marcotcr/lime
 - **SHAP** : https://github.com/slundberg/shap
 - **Captum** : https://github.com/pytorch/captum (PyTorch)
 - **Alibi** : https://github.com/SeldonIO/alibi
 
-**NLP & Deep Learning** 🧠
+**NLP & Deep Learning**
 
 - **Transformers (HuggingFace)** : https://huggingface.co/transformers/
 - **PyTorch** : https://pytorch.org/
 - **TensorFlow** : https://www.tensorflow.org/
 
-**Visualization** 📊
+**Visualization**
 
 - **Matplotlib** : https://matplotlib.org/
 - **Seaborn** : https://seaborn.pydata.org/
@@ -422,17 +422,17 @@ Libraries et Outils
 
 ---
 
-Conférences et Workshops Pertinents
+Conférences et workshops pertinents
 ===================================
 
-**Conférences Majeures** 🎤
+**Conférences majeures**
 
 - **ACL** : Association for Computational Linguistics (Annual)
 - **EMNLP** : Conference on Empirical Methods in NLP (Annual)
 - **NAACL** : North American Chapter ACL (Biennial)
 - **NeurIPS** : Neural Information Processing Systems (Annual)
 
-**Workshops Spécialisés** 📍
+**Workshops spécialisés**
 
 - **BlackboxNLP** : Interpreting and Understanding Black-box NLP Models
   

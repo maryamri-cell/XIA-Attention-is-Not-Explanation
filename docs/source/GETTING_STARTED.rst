@@ -4,11 +4,11 @@
 Démarrage Rapide
 ===============
 
-Bienvenue ! Cette page vous guide pour commencer en 5 minutes.
+Bienvenue. Cette page présente des instructions pour démarrer rapidement.
 
 ---
 
-Option 1 : Lire la Documentation en Ligne ⭐ (Recommandé)
+Option 1 : Lire la documentation en ligne (recommandé)
 ==========================================================
 
 Si vous avez accès à une version construite de cette documentation, naviguez simplement :
@@ -24,7 +24,7 @@ Durée estimée : 1-3 heures (selon profondeur).
 Option 2 : Construire Localement (5 minutes)
 =============================================
 
-Si vous avez la source source (repo GitHub cloned) :
+Si vous disposez des sources (dépôt cloné) :
 
 **Pré-requis** : Python 3.8+, pip
 
@@ -48,7 +48,7 @@ Si vous avez la source source (repo GitHub cloned) :
     # Sur Windows :
     start build\html\index.html
 
-**Résultat** : Vous avez une documentation web complète offline !
+**Résultat** : Documentation HTML locale accessible hors ligne.
 
 ---
 
@@ -237,18 +237,18 @@ Si vous voulez essayer immédiatement :
     Attention shape: torch.Size([1, 12, 9, 9])
     Prediction: tensor([[-4.2367, 4.5634]])
 
-Bravo ! Vous avez extrait l'attention ! 🎉
+Exemple : extraction des poids d'attention affichée ci-dessus.
 
 ---
 
 Première Question : Par Où Commencer ?
 ======================================
 
-**Si vous êtes impatiente/impatient** 🏃
+**Si vous souhaitez voir rapidement les résultats**
 
-→ Allez directement à **Section 5 : Expériences & Visualisations**
+→ Accédez à **Section 5 : Expériences & Visualisations**
 
-Vous verrez les résultats maintenan. Puis revenez lire les sections 1-4 si vous voulez comprendre le contexte.
+Vous verrez les résultats maintenant. Revenez ensuite aux sections 1-4 pour le contexte détaillé.
 
 ---
 
@@ -260,11 +260,11 @@ Progressez linéairement. C'est plus logique et plus complet.
 
 ---
 
-**Si vous avez des questions spécifiques** 🤔
+**Si vous avez des questions spécifiques**
 
 → Consultez la **FAQ**
 
-Vous y trouverez probablement la réponse !
+La FAQ couvre les questions les plus fréquentes.
 
 ---
 
@@ -314,16 +314,14 @@ Coincée/Coincé ? Besoin d'aide ?
 
 ---
 
-Bon Démarrage ! 🚀
-==================
+Démarrage
+=========
 
-Vous êtes maintenant prête/prêt à explorer le monde fascinant de l'explicabilité de l'IA.
+Vous pouvez désormais parcourir la documentation selon votre rythme.
 
-Commencez quand vous voulez. Progressez à votre rythme.
+N'hésitez pas à poser des questions via les issues ou discussions du dépôt.
 
-Et surtout... **posez des questions** ! C'est comme ça qu'on apprend.
-
-Bonne lecture ! 📖
+Bonne lecture.
 
 ---
 

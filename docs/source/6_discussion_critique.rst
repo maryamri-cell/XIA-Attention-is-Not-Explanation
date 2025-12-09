@@ -34,9 +34,9 @@ Forces de l'Attention comme Explication
 
 Bien que critique, l'attention a des avantages réels.
 
-1. **Rapidité de Calcul** ⚡
+1. **Rapidité de calcul**
    
-   L'attention est déjà calculée lors de l'inférence → pas de surcoût.
+   L'attention est déjà calculée lors de l'inférence et n'entraîne pas de surcoût important.
    
    Comparaison :
    
@@ -52,44 +52,44 @@ Bien que critique, l'attention a des avantages réels.
       * - SHAP
         - ~2 heures (combinaisons)
    
-   **Avantage** : Ordre de magnitude plus rapide.
+   **Avantage** : Ordre de grandeur bien plus rapide.
 
-2. **Interprétabilité Intuitive** 🎨
+2. **Interprétabilité intuitive**
    
-   Les heatmaps d'attention sont faciles à visualiser et comprendre.
+   Les heatmaps d'attention sont faciles à visualiser et à comprendre.
    
-   Un utilisateur non-technique peut voir « le modèle regarde ce mot » sans calculs complexes.
+   Un utilisateur non technique peut repérer rapidement les tokens "regardés" par le modèle.
    
    Comparaison :
    
    - **Attention** : "Token A a 0.70 d'attention" → Clair
-   - **LIME** : "Token A a un coefficient -0.23 dans la régression locale" → Confus
-   - **SHAP** : "Token A a une valeur Shapley de 0.15" → Abstrait
+   - **LIME** : "Token A a un coefficient -0.23 dans la régression locale" → Moins intuitif
+   - **SHAP** : "Token A a une valeur Shapley de 0.15" → Plus abstrait
 
-3. **Granularité Détaillée** 🔬
+3. **Granularité détaillée**
    
-   L'attention produit des scores par :
+   L'attention produit des scores pour :
    
    - Chaque couche (6 niveaux)
    - Chaque tête (12 par couche)
    - Chaque position (séquence entière)
    
-   On peut analyser les patterns à chaque niveau.
+   Il est possible d'analyser les motifs à chaque niveau.
 
-4. **Insights Structurels** 🧠
+4. **Insights structurels**
    
-   L'attention révèle comment le modèle organise l'information :
+   L'attention révèle des aspects de l'organisation interne du modèle :
    
-   - Couches basses : relationner tokens adjacents (syntaxe)
-   - Couches hautes : capturer le sens global (sémantique)
+   - Couches basses : relations locales entre tokens (syntaxe)
+   - Couches hautes : intégration du sens global (sémantique)
    
-   Cela donne une fenêtre sur les représentations internes.
+   Cela fournit une fenêtre sur les représentations internes.
 
-5. **Absence de Perturbation** ✓
+5. **Absence de perturbation**
    
    Contrairement à LIME (qui perturbe l'entrée), l'attention n'interfère pas avec le modèle.
    
-   → Plus proche de la véritable explication.
+   → Approche non intrusive par rapport au modèle.
 
 ---
 
@@ -98,21 +98,21 @@ Limitations et Risques de l'Attention
 
 Les critiques sont plus graves.
 
-1. **Non-Causalité Fondamentale** ⚠️
+1. **Non-causalité fondamentale**
    
-   **Problème** : L'attention montre ce que le modèle "observe", pas ce qui *cause* la décision.
+   **Problème** : l'attention montre ce que le modèle observe, pas nécessairement ce qui cause la décision.
    
-   **Analogue humaine** :
+   **Analogie** :
    
-       Vous demandez : « Pourquoi tu crois que c'est dangereux ? »
+       On demande : « Pourquoi pensez-vous que c'est dangereux ? »
        
-       Réponse (par "attention") : « Je regardais la couleur rouge. »
+       Réponse (par observation) : « Je regardais la couleur rouge. »
        
-       Explication causale réelle : « La couleur rouge signale un risque biologique. »
+       Explication causale : « La couleur rouge indique un risque biologique. »
    
-   L'attention n'explique pas le "pourquoi".
+   En résumé : l'attention n'explique pas automatiquement le « pourquoi ».
 
-2. **Ambiguïté Multi-Têtes** 🎭
+2. **Ambiguïté multi-têtes**
    
    Chaque tête produit une distribution d'attention différente.
    
@@ -126,11 +126,11 @@ Les critiques sont plus graves.
        Tête 4: "!" (0.82)
        ...
    
-   **Question** : Laquelle prendre ? Comment agréger ?
+   **Question** : laquelle utiliser ? Comment les agréger ?
    
    Pas de consensus standard → choix arbitraires.
 
-3. **Biais Positionnel** 📍
+3. **Biais positionnel**
    
    Les positions initiales et finales reçoivent souvent plus d'attention, indépendamment du contenu.
    
@@ -141,38 +141,38 @@ Les critiques sont plus graves.
        Phrase 1: "film good XYZABC" (mot gibberish à la fin)
        Phrase 2: "film good excellent" (bon mot à la fin)
        
-       → L'attention à la fin peut être similaire !
+       → L'attention à la fin peut être similaire.
    
-   C'est un **biais de position**, pas d'importance sémantique.
+   Il s'agit d'un biais de position, et non d'une mesure d'importance sémantique.
 
-4. **Manipulabilité et Découplage** 🎪
+4. **Manipulabilité et découplage**
    
    **Expérience de Jain & Wallace (2019)** :
    
-   Permuter aléatoirement les poids d'attention d'une phrase ne change pas la prédiction.
+   Permuter aléatoirement les poids d'attention d'une phrase peut ne pas changer la prédiction.
    
    .. math::
        
        \text{Si} \quad \alpha' \neq \alpha \quad \text{mais} \quad f(x, \alpha') = f(x, \alpha)
        
-       \text{Alors l'attention n'est pas causale}
+       \text{Alors l'attention n'est pas nécessairement causale}
    
-   **Implication** : Les poids d'attention sont **décuplés** de la décision réelle.
+   **Implication** : les poids d'attention peuvent être découplés de la décision finale.
 
-5. **Manque de Spécificité pour la Tâche** 🎯
+5. **Manque de spécificité pour la tâche**
    
-   L'attention est entraînée globalement sur la tâche, pas spécifiquement pour chaque classe.
+   L'attention est généralement entraînée globalement pour la tâche, et non spécifiquement pour chaque classe.
    
-   **Exemple** : Pour la classification de sentiments
+   **Exemple** : pour la classification de sentiments
    
    .. code-block:: text
    
-       Même mot "surprising" peut signifier POSITIF ("surprisingly good")
-       ou NÉGATIF ("surprisingly bad")
+       Le même mot "surprising" peut signifier POSITIF ("surprisingly good")
+       ou NÉGATIF ("surprisingly bad").
        
-       L'attention ne capture pas cette dépendance au contexte de classe.
+       L'attention ne capture pas toujours cette dépendance contextuelle.
 
-6. **Instabilité et Sensibilité Numériques** 🔀
+6. **Instabilité et sensibilité numériques**
    
    La softmax amplifie les petites différences :
    
@@ -180,20 +180,20 @@ Les critiques sont plus graves.
        
        \text{score}_1 = 10.0, \quad \text{score}_2 = 9.9 \quad \Rightarrow \quad \alpha_1 = 0.55, \alpha_2 = 0.45
    
-   Une petite perturbation de 0.1 change le classement de 5%.
+   Une petite perturbation (0.1) peut changer légèrement les poids relatifs.
    
-   → Instabilité numérique.
+   → Risque d'instabilité numérique.
 
-7. **Agrégation Arbitraire** 🔧
+7. **Agrégation arbitraire**
    
-   Pour chaque couche et tête, on obtient une attention différente.
+   Pour chaque couche et tête, on obtient une distribution d'attention distincte.
    
    Comment les combiner ?
    
-   - Moyenne ? Max ? Produit ?
-   - Poids par importance ? Basé sur quoi ?
+   - Moyenne, max ou produit ?
+   - Moyens de pondération ? Sur quelles bases ?
    
-   Chaque choix donne des résultats différents.
+   Chaque stratégie d'agrégation produit des résultats différents.
 
 ---
 
@@ -246,9 +246,9 @@ Tableau Comparatif Complet
 
 **Conclusions du Tableau** :
 
-- Si **rapidité** → Attention ✓
-- Si **exactitude** → SHAP ✓
-- Pour **production responsable** → LIME + SHAP ✓
+- Si **rapidité** → Attention
+- Si **exactitude** → SHAP
+- Pour **production responsable** → LIME + SHAP
 
 ---
 
@@ -268,7 +268,7 @@ Ici, l'attention se concentre sur les adjectifs positifs ("fantastic", "wonderfu
 
 LIME confirme : ces adjectifs sont effectivement les plus importants.
 
-**Corrélation** : :math:`\rho = 0.68` ✓
+**Corrélation** : :math:`\rho = 0.68`
 
 **Pourquoi ça marche** :
 
@@ -310,15 +310,15 @@ Différence clé : un seul mot ("NOT").
 
 **Attention** :
 
-- Pour A : "good" = 0.56 ✓
-- Pour B : "good" = 0.53, "NOT" = 0.06 ✗
+- Pour A : "good" = 0.56
+- Pour B : "good" = 0.53, "NOT" = 0.06
 
 L'attention **ne détecte pas** que "NOT" change tout.
 
 **LIME** :
 
 - Pour A : "good" = +0.34
-- Pour B : "good" = -0.35, "NOT" = -0.42 ✓
+- Pour B : "good" = -0.35, "NOT" = -0.42
 
 LIME capture la dépendance au contexte et la négation.
 
@@ -374,52 +374,52 @@ Recommandations Pratiques
 Pour les Praticiens
 ~~~~~~~~~~~~~~~~~~~
 
-1. **Ne pas utiliser l'attention seule comme explication** ❌
+1. **Ne pas utiliser l'attention seule comme explication**
    
-   Utilisez-la comme **outil exploratoire** pour déboguer et comprendre le modèle.
+   Utilisez-la comme outil exploratoire pour déboguer et comprendre le modèle.
 
-2. **Toujours valider avec LIME ou SHAP** ✓
+2. **Toujours valider avec LIME ou SHAP**
    
-   Avant de publier une explication, validez avec une méthode indépendante.
+   Avant de publier une explication, validez cette explication avec une méthode indépendante.
 
-3. **Transparence** 🎯
+3. **Transparence**
    
-   Si vous utilisez l'attention, dites clairement à l'utilisateur :
+   Si vous utilisez l'attention, informez clairement l'utilisateur :
    
        "Ces heatmaps montrent où le modèle regarde, pas nécessairement pourquoi."
 
-4. **Trier les cas** 📊
+4. **Trier les cas**
    
-   - Phrases simples → Attention peut suffire (avec caveats)
-   - Phrases complexes, négations → Utilisez LIME/SHAP
-   - Production responsable → Always LIME/SHAP
+   - Phrases simples → l'attention peut suffire (avec réserves)
+   - Phrases complexes, négations → utiliser LIME/SHAP
+   - Production responsable → systématiquement LIME/SHAP
 
-5. **Multi-Méthodes** 🔄
+5. **Multi-méthodes**
    
-   Croiser :
+   Combiner :
    
    - Attention (rapide, intuitive)
    - LIME (locale, empirique)
    - SHAP (théorique, globale)
    
-   Si les trois concordent → confidence élevée.
+   Si les trois méthodes concordent → confiance accrue.
 
 Pour les Chercheurs
 ~~~~~~~~~~~~~~~~~~~
 
-1. **Développer des métriques de fiabilité** 🔬
+1. **Développer des métriques de fiabilité**
    
-   Créer des scores quantitatifs pour quand l'attention est trustworthy.
+   Créer des scores quantitatifs pour prédire quand l'attention est digne de confiance.
 
-2. **Attention améliorée** 🚀
+2. **Attention améliorée**
    
    - Attention orientée vers la tâche (task-aware attention)
    - Attention avec contraintes de causalité
    - Attention robuste aux adversaires
 
-3. **Tester sur plus de tâches** 🧪
+3. **Tester sur plus de tâches**
    
-   NLP (récente), Vision (important), Autres domaines.
+   NLP, vision et autres domaines.
 
 4. **Comprendre les failure modes** 🐛
    
@@ -437,17 +437,17 @@ Vue Globale : Supporter Jain & Wallace vs Wiegreffe & Pinter
 
 Notre étude soutient partiellement cette critique.
 
-✓ **Points confirmés** :
+✓ **Points validés** :
 
-- Corrélation moyenne faible (0.31) avec LIME
-- Négations mal traitées
-- Discovélage entre attention et décision
+- Corrélation moyenne modérée-faible (0.31) avec LIME
+- Négations mal traitées par l'attention
+- Découplage observé entre attention et décision
 
-⚠ **Points à nuancer** :
+**Points nuancés** :
 
-- Certains cas marchent bien (ρ = 0.68)
-- Attention utile pour exploration, pas pour explication finale
-- Différence entre "pas d'explication causale" et "pas d'explication du tout"
+- Certains cas présentent une bonne corrélation (ρ = 0.68)
+- L'attention reste utile pour exploration, non pour explication finale
+- Distinction importante : « pas d'explication causale » n'égale pas « complètement inutile »
 
 ---
 
@@ -456,16 +456,16 @@ Notre étude soutient partiellement cette critique.
 
 Notre étude soutient partiellement cette réponse.
 
-✓ **Points confirmés** :
+✓ **Points soutenant cette critique** :
 
 - Les tests trop stricts de Jain ne reflètent pas tous les usages
-- Attention peut aider en contexte (exploration, débugage)
+- L'attention peut aider en contexte (exploration, débugage)
 - Distinction entre explication et explication fidèle importante
 
-⚠ **Cependant** :
+**Points de réserve** :
 
-- L'attention seule **ne suffit pas** pour une explication fidèle
-- Peut être tromperie si utilisée naïvement
+- L'attention seule ne suffit pas pour une explication fiable
+- Peut être trompeuse si utilisée sans discernement
 - Requiert validation empirique (LIME/SHAP)
 
 ---
@@ -475,28 +475,24 @@ Synthèse : Position Nuancée
 
 .. note::
 
-    **Notre conclusion** : 
+    **Notre conclusion** :
     
     L'attention n'est ni une explication complète, ni complètement inutile.
     
-    C'est un **outil exploratoire puissant** qui :
+    C'est un outil exploratoire puissant qui :
     
-    - ✓ Offre des insights rapides et visuellement intuitifs
-    - ✗ Ne garantit pas la causalité
-    - ⚠ Peut être trompeuse si mal interprétée
-    - ✓ Reste utile quand validée par d'autres méthodes
+    - Offre des insights rapides et visuellement intuitifs
+    - Ne garantit pas la causalité
+    - Peut être trompeuse si mal interprétée
+    - Reste utile quand validée par d'autres méthodes
 
 ---
 
 Prochaines Étapes
 ==================
 
-Nous concluons avec une synthèse et des recommendations finales.
+Nous concluons avec une synthèse et des recommandations finales.
 
-.. button-ref:: 7_conclusion_points_cles
-   :color: primary
-   :outline:
-
-   Vers la Conclusion →
+Continuez vers la conclusion : :ref:`conclusion-points-cles`
 
 ---

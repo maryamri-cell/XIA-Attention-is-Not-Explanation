@@ -119,20 +119,20 @@ Point Clé 5 : Attention Utile en Tant qu'Outil Exploratoire
 
 ---
 
-Points de Synthèse (En Vrac)
-============================
+Points de synthèse
+==================
 
-✓ **L'attention donne des indices**, pas des explications définitives.
+- L'attention donne des indices, mais pas des explications définitives.
 
-✓ **Quand attention + LIME + SHAP concordent** → Très confident.
+- Quand attention, LIME et SHAP concordent : confiance accrue.
 
-✓ **Quand attention ≠ LIME/SHAP** → Attention probablement trompée.
+- Quand attention diverge de LIME/SHAP : prudence requise.
 
-⚠ **Ne pas laisser les utilisateurs voir les heatmaps sans avertissement**.
+- Avertir les utilisateurs avant d'afficher des heatmaps.
 
-⚠ **Certaines structures (négations) sont systématiquement échouées**.
+- Certaines structures (négations) sont systématiquement problématiques.
 
-⚠ **Corrélation faible ne signifie pas "complètement inutile"** → contexte-dépendant.
+- Une corrélation faible n'implique pas inutilité : la validité dépend du contexte.
 
 ---
 
@@ -146,18 +146,18 @@ Notre position :
 .. list-table::
    :header-rows: 1
 
-   * - Auteur
-     - Thèse
-     - Notre verdict
-   * - **Jain & Wallace**
-     - Attention ≠ explication causale
-     - ✓ Fortement soutenu (ρ = 0.31)
-   * - **Wiegreffe & Pinter**
-     - Attention peut aider sous conditions
-     - ✓ Partiellement soutenu (utile pour exploration)
-   * - **Nous**
-     - Position nuancée
-     - ✓ Confirmée empiriquement
+    * - Auteur
+       - Thèse
+       - Notre verdict
+    * - **Jain & Wallace**
+       - Attention ≠ explication causale
+       - Fortement soutenu (ρ = 0.31)
+    * - **Wiegreffe & Pinter**
+       - Attention peut aider sous conditions
+       - Partiellement soutenu (utile pour exploration)
+    * - **Nous**
+       - Position nuancée
+       - Confirmée empiriquement
 
 **Conclusion unifiée** :
 
@@ -181,14 +181,14 @@ Pour les Praticiens ML
        ☐ Avertir sur limitations
 
 2. **Utiliser l'attention pour** :
-   
-   - Débugage rapide ✓
-   - Exploration initiale ✓
-   - Comprendre la structure du modèle ✓
-   - **Pas pour** :
-   - Réglementations (GDPR, etc.) ✗
-   - Décisions critiques sans validation ✗
-   - Publications sans caveat ✗
+
+   - Débogage rapide
+   - Exploration initiale
+   - Comprendre la structure du modèle
+   - **À ne pas utiliser pour** :
+   - Réglementations (GDPR, etc.) — déconseillé
+   - Décisions critiques sans validation — déconseillé
+   - Publications sans réserve — déconseillé
 
 3. **Pour les applications sensibles** :
    
@@ -214,7 +214,7 @@ Pour les Chercheurs
 Recommandations de Haut Niveau
 ===============================
 
-**Pour les Producteurs de Modèles** 📊
+**Pour les Producteurs de Modèles**
 
 .. code-block:: text
 
@@ -248,7 +248,7 @@ Recommandations de Haut Niveau
 Perspectives Futures
 ====================
 
-**Améliorations Court Terme** 🚀
+**Améliorations Court Terme**
 
 1. **Attention Orientée Vers la Tâche** (Task-Aware Attention)
    
@@ -264,7 +264,7 @@ Perspectives Futures
 
 ---
 
-**Améliorations Moyen Terme** 📈
+**Améliorations Moyen Terme**
 
 1. **Architectures plus explicables**
    
@@ -280,7 +280,7 @@ Perspectives Futures
 
 ---
 
-**Améliorations Long Terme** 🔮
+**Améliorations Long Terme**
 
 1. **Explicabilité par Design**
    
@@ -364,24 +364,24 @@ Lecture Suggérée (Poursuite)
 
 Voici les meilleures ressources pour approfondir :
 
-**Fondamentaux de l'Attention** 📚
+**Fondamentaux de l'Attention**
 
 - Vaswani et al. (2017) - "Attention is All You Need"
 - Blog Illustrated Transformer (Jay Alammar)
 
-**Critique de l'Attention** 📖
+**Critique de l'Attention**
 
 - Jain & Wallace (2019) - "Attention is Not Explanation" [NAACL]
 - Wiegreffe & Pinter (2019) - "Attention is Not Not Explanation" [EMNLP]
 - Serrano & Smith (2019) - "Is Attention Interpretable?" [ACL]
 
-**Méthodes d'Explicabilité** 🔍
+**Méthodes d'Explicabilité**
 
 - Ribeiro et al. (2016) - LIME [KDD]
 - Lundberg & Lee (2017) - SHAP [NeurIPS]
 - Montavon et al. (2017) - "Methods for Interpreting..." [Digital Signal Processing]
 
-**Causality et XAI** 🔗
+**Causality et XAI**
 
 - Pearl (2009) - "Causality: Models, Reasoning..."
 - Goyal et al. (2019) - "Counterfactual Explanations..." [CVPR]

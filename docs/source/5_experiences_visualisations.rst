@@ -29,9 +29,9 @@ Nous utilisons la **corrélation de Spearman** :
 
 **Interprétation** :
 
-- :math:`\rho > 0.5` → Attention fiable ✓
-- :math:`0 < \rho \leq 0.5` → Attention partiellement fiable ⚠
-- :math:`\rho \leq 0` → Attention non fiable ✗
+- :math:`\rho > 0.5` → Attention fiable
+- :math:`0 < \rho \leq 0.5` → Attention partiellement fiable
+- :math:`\rho \leq 0` → Attention non fiable
 
 ---
 
@@ -109,19 +109,19 @@ Phrase test : *"This movie is absolutely fantastic and wonderful!"*
    * - absolutely
      - #2
      - #3
-     - ✓ Bon
+     - Bon
    * - wonderful
      - #4
      - #2
-     - ⚠ Désaccord
+     - Désaccord
    * - movie
      - #3
      - #4
-     - ✓ Bon
+     - Bon
    * - is, and
      - #5
      - #5
-     - ✓ Parfait
+     - Parfait
 
 **Corrélation de Spearman** : :math:`\rho = 0.68` (p < 0.01)
 
@@ -425,15 +425,94 @@ Key Findings (Résumés)
 
 ---
 
+Résultat 6 : Comparaison Directe Attention vs SHAP
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Pour la même phrase « This movie is absolutely fantastic and wonderful! », nous comparons maintenant l'attention avec **SHAP** (valeurs de Shapley), considérée comme la référence d'or de l'explicabilité.
+
+**Résultats SHAP** :
+
+.. code-block:: text
+
+    Ranking par SHAP:
+    1. fantastic     (+0.38)    ← Impact maximal
+    2. wonderful     (+0.31)    ← Impact élevé
+    3. absolutely    (+0.16)    ← Impact modéré
+    4. movie         (+0.08)    ← Impact léger
+    5. this, is, and (≈0.01)    ← Impact minimal
+    6. [CLS], [SEP]  (≈0)       ← Pas d'impact
+
+**Tableau Comparatif : Attention vs SHAP**
+
+.. list-table::
+   :header-rows: 1
+
+   * - Token
+     - Attention poids
+     - SHAP valeur
+     - Concordance?
+   * - fantastic
+     - 0.25
+     - +0.38
+     - Très bon accord
+   * - wonderful
+     - 0.10
+     - +0.31
+     - Sous-estimé par attention
+   * - absolutely
+     - 0.15
+     - +0.16
+     - Excellent accord
+   * - movie
+     - 0.12
+     - +0.08
+     - Bon accord
+   * - [CLS]
+     - 0.08
+     - ≈0
+     - Bon accord
+
+**Corrélation directe** : :math:`\rho_{\text{Attention-SHAP}} = 0.72` (p < 0.01)
+
+C'est une corrélation plus forte qu'avec LIME (0.68), suggérant que l'attention capture bien **l'ordre d'importance** pour cette phrase simple.
+
+**Observation clé** : L'attention ne capture pas les **magnitudes absolues** (SHAP donne +0.38 pour "fantastic", l'attention se normalise sur [0,1]), mais elle capture raisonnablement l'**ordre relatif** des tokens importants.
+
+---
+
+Comparaison Agrégée : Attention vs SHAP sur les 7 Phrases
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Sur l'ensemble du dataset :
+
+.. code-block:: text
+
+    Corrélation moyenne Attention-SHAP : 0.45
+    Écart-type                          : 0.38
+    Min                                 : -0.10
+    Max                                 : 0.82
+    Phrases avec ρ > 0.5                : 3 (43%)
+    Phrases avec ρ ≤ 0.3                : 3 (43%)
+
+**Comparaison avec LIME**
+
+.. code-block:: text
+
+    Corrélation moyenne Attention-LIME : 0.31
+    Corrélation moyenne Attention-SHAP : 0.45
+    
+    → SHAP montre une meilleure corrélation avec l'attention que LIME
+
+**Interprétation** :
+
+- L'attention est **mieux alignée avec SHAP** (méthode théorique) qu'avec LIME (méthode heuristique)
+- Cela suggère que l'attention capture une certaine notion d'importance basée sur les contributions théoriques
+- Cependant, la corrélation moyenne de 0.45 reste **modérée**, pas excellente
+- Le problème persistant avec les négations et structures complexes est confirmé
+
+---
+
 Prochaines Étapes
 ==================
 
-Ces résultats motivent une discussion critique :
-
-.. button-ref:: 6_discussion_critique
-   :color: primary
-   :outline:
-
-   Vers la Discussion Critique →
-
----
+Ces résultats motivent une discussion critique nuancée :

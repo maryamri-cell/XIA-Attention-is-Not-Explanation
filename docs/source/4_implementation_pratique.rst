@@ -357,7 +357,6 @@ Points clés :
 2. Calculer la corrélation de Spearman
 3. Visualiser et comparer les résultats
 4. Analyser les cas pathologiques (négations, etc.)
-
 ---
 
 Prochaines Étapes
@@ -365,10 +364,6 @@ Prochaines Étapes
 
 Le code complet est dans le notebook `Projet7_Attention_Not_Explanation.ipynb`.
 
-.. button-ref:: 5_experiences_visualisations
-   :color: primary
-   :outline:
-
-   Vers les Expériences →
+Continuez vers la section expériences et résultats : :ref:`experiences-visualisations`
 
 ---

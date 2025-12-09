@@ -328,34 +328,9 @@ Un :math:`F_1` élevé (~0.8+) indique que l'attention classe correctement les f
 
 ---
 
-Résumé Mathématique
-====================
-
-+------------------+----------------------------------------------+-------------------+
-| Concept          | Équation                                     | Usage             |
-+==================+==============================================+===================+
-| Attention        | :math:`\alpha = \text{softmax}(QK^T/\sqrt{d_k})` | Extraction        |
-+------------------+----------------------------------------------+-------------------+
-| LIME             | Régression locale pondérée                   | Baseline          |
-+------------------+----------------------------------------------+-------------------+
-| SHAP             | Valeurs de Shapley du jeu coopératif         | Gold standard     |
-+------------------+----------------------------------------------+-------------------+
-| Corrélation      | Rang de Spearman :math:`\rho`                | Validation        |
-+------------------+----------------------------------------------+-------------------+
-| Significance     | p-value sur :math:`\rho`                     | Robustesse        |
-+------------------+----------------------------------------------+-------------------+
-
----
-
 Prochaines Étapes
 ==================
 
-Avec ces équations en tête, passons à l'implémentation pratique :
+Avec ces équations en tête, passons à l'implémentation pratique.
 
-.. button-ref:: 4_implementation_pratique
-   :color: primary
-   :outline:
-
-   Vers le Code →
-
----
+L'étape suivante explore le code reproductible et les détails techniques de l'exécution.

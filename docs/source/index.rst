@@ -1,3 +1,5 @@
+Remove standalone '---' separators: replaced occurrences with standard spacing and headings.
+
 .. XAI Attention is Not Explanation documentation master file
 
 ==========================================================
@@ -19,8 +21,6 @@ et `Wiegreffe & Pinter (2019) <https://arxiv.org/abs/1908.04626>`_
    **Cours** : Explicabilité de l'IA  
    **Étudiants** : [Nom Étudiant 1] & [Nom Étudiant 2]
 
----
-
 Table des Matières
 ==================
 
@@ -38,8 +38,6 @@ Table des Matières
    7_conclusion_points_cles
    8_references
 
----
-
 Présentation Générale
 =====================
 
@@ -55,9 +53,7 @@ Cependant, deux articles majeurs proposent des perspectives diamétralement oppo
 - **Jain & Wallace (2019)** : L'attention est fondamentalement insuffisante comme outil d'explication
 - **Wiegreffe & Pinter (2019)** : L'attention peut fournir des explications valides sous certaines conditions
 
-Ce projet **reproduit expérimentalement ce débat** et développe une analyse critique de ces positions.
-
----
+This project **reproduit expérimentalement ce débat** et développe une analyse critique de ces positions.
 
 Aperçu Rapide
 =============
@@ -66,68 +62,43 @@ Aperçu Rapide
    Les mécanismes d'attention ne reflètent pas nécessairement les éléments qui influencent la décision finale du modèle.
 
 **Objectifs**
-   ✓ Analyser la fiabilité de l'attention comme explication  
-   ✓ Comparer avec LIME et SHAP  
-   ✓ Identifier des cas pathologiques  
-   ✓ Développer un esprit critique sur les heatmaps d'attention
+   - Analyser la fiabilité de l'attention comme méthode d'explicabilité
+   - Comparer l'attention avec des méthodes d'attribution établies (LIME, SHAP)
+   - Identifier des cas pathologiques où l'attention est trompeuse
+   - Formuler des recommandations pour l'utilisation responsable des heatmaps d'attention
 
 **Méthode**
-   - Fine-tuned DistilBERT (SST-2, sentiment analysis)
-   - Extraction des poids d'attention
+   - Fine-tuning de DistilBERT (SST-2, classification de sentiments)
+   - Extraction et analyse des poids d'attention
    - Comparaison avec LIME et SHAP
-   - Analyse de corrélation (Spearman)
-   - Cas d'étude : négations et structures complexes
+   - Analyse statistique (corrélation de Spearman)
+   - Études de cas : négations et constructions linguistiques complexes
 
-**Résultats Clés**
-   - Corrélation moyenne faible (~0.3) avec LIME
-   - Attention mal adaptée aux négations
-   - L'attention est un **outil exploratoire**, pas une **explication causale**
-
----
+**Résultats clés**
+   - Corrélation moyenne modérée-faible (~0.3) avec LIME
+   - Sensibilité limitée de l'attention aux négations
+   - Conclusion : l'attention constitue un outil exploratoire davantage qu'une explication causale
 
 Accès Rapide
 ============
 
-.. grid:: 2
-   :gutter: 3
+**1. Commencer**
+   Comprenez le contexte scientifique et les motivations du projet. Voir :ref:`contexte-motivation`
 
-   .. grid-item-card:: **Commencer**
-      :link: 1_contexte_motivation
-      :link-type: doc
+**2. Concepts Théoriques**
+   Équations et formalismes mathématiques du mécanisme d'attention. Voir :ref:`formalisation-mathematique`
 
-      Comprenez le contexte scientifique et les motivations du projet.
+**3. Code & Implémentation**
+   Installation, configuration et code pour exécuter les expériences. Voir :ref:`implementation-pratique`
 
-   .. grid-item-card:: **Concepts Théoriques**
-      :link: 3_formalisation_mathematique
-      :link-type: doc
+**4. Résultats**
+   Visualisations, analyses et résultats empiriques. Voir :ref:`experiences-visualisations`
 
-      Équations et formalismes mathématiques du mécanisme d'attention.
+**5. Critique & Discussion**
+   Forces, limites et recommandations pratiques. Voir :ref:`discussion-critique`
 
-   .. grid-item-card:: **Code & Implémentation**
-      :link: 4_implementation_pratique
-      :link-type: doc
-
-      Installation, configuration et code pour exécuter les expériences.
-
-   .. grid-item-card:: **Résultats**
-      :link: 5_experiences_visualisations
-      :link-type: doc
-
-      Visualisations, analyses et résultats empiriques.
-
-   .. grid-item-card:: **Critique & Discussion**
-      :link: 6_discussion_critique
-      :link-type: doc
-
-      Forces, limites et recommandations pratiques.
-
-   .. grid-item-card:: **Conclusion**
-      :link: 7_conclusion_points_cles
-      :link-type: doc
-
-      Points clés et perspectives futures.
-
----
+**6. Conclusion**
+   Points clés et perspectives futures. Voir :ref:`conclusion-points-cles`
 
 Comment Utiliser Cette Documentation
 ====================================
@@ -145,8 +116,6 @@ Cette documentation est organisée en 8 sections :
 
 .. tip::
    Vous pouvez naviguer linéairement ou directement consulter les sections qui vous intéressent.
-
----
 
 Environnement Requis
 ====================
@@ -166,8 +135,6 @@ Installation rapide :
 
    pip install torch transformers lime shap matplotlib seaborn pandas numpy scipy
 
----
-
 Indices et Ressources
 =====================
 
@@ -178,8 +145,6 @@ Indices et Ressources
    glossaire
    faq
 
----
-
 Licence et Attribution
 ======================
 
@@ -189,7 +154,5 @@ Ce projet s'inspire des travaux suivants :
 - Wiegreffe & Pinter (2019) - « Attention is Not Not Explanation » (EMNLP)
 
 **Utilisation** : Libre d'utilisation à des fins éducatives et de recherche.
-
----
 
 .. include:: footer.rst
