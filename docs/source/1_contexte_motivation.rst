@@ -1,5 +1,3 @@
-Explanation: remove standalone '---' separators from this file to avoid small dashes in generated HTML.
-
 .. _contexte-motivation:
 
 ============================
@@ -89,11 +87,6 @@ Où se Situe ce Projet ?
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 Ce projet **prend du recul** et propose une **analyse critique autonome** :
-
-.. image:: _static/debate_spectrum.txt
-   :align: center
-   :alt: Spectrum du débat
-
 - Nous ne prenons pas parti de manière dogmatique
 - Reproduction expérimentale des analyses présentées par les deux camps
 - Quantification empirique de la fiabilité de l'attention via LIME et SHAP
