@@ -168,28 +168,6 @@ pip install sphinx sphinx-rtd-theme
 | Production sensible | - | ✓ | ✓ |
 | Conformité GDPR | ⚠ | ✓ | ✓ |
 
-## 🤝 Contribution
-
-Les contributions sont bienvenues !
-
-- **Corrections** : Typos, formulations, code
-- **Extensions** : Nouveaux cas d'étude, langues, modèles
-- **Discussions** : Issues et discussions GitHub
-
-## 📄 Licence
-
-Libre d'usage pour fins **éducatives et de recherche**.
-
-Citation recommandée :
-```bibtex
-@misc{XAIAttentionProject2025,
-  title={Mini-Projet XAI: Attention is Not Explanation},
-  author={[Vos noms]},
-  year={2025},
-  institution={[Votre institution]},
-  url={https://[votre-repo]}
-}
-```
 
 ## 🔗 Ressources Externes
 
@@ -207,11 +185,6 @@ Citation recommandée :
 - Stanford CS224N : https://cs224n.stanford.edu/
 - HuggingFace Course : https://huggingface.co/course
 
-## 📞 Support
-
-- **Issues** : GitHub Issues (ce repo)
-- **Discussions** : GitHub Discussions
-- **Email** : [contact des auteurs]
 
 ## 🎉 Remerciements
 
